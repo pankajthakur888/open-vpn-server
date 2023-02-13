@@ -1,0 +1,22 @@
+# tasks file for open-vpn-server
+---
+- name: Install OpenVPN
+  apt:
+    name: openvpn
+    state: latest
+
+- name: Create OpenVPN configuration directory
+  file:
+    path: /etc/openvpn
+    state: directory
+
+- name: Copy server configuration file
+  copy:
+    src: files/server.conf
+    dest: /etc/openvpn/server.conf
+
+- name: Start OpenVPN service
+  service:
+    name: openvpn
+    state: started
+    enabled: yes

@@ -1,0 +1,7 @@
+---
+- name: Deploy OpenVPN
+  hosts: localhost
+  become: yes
+  gather_facts: yes
+  roles:
+    - role: open-vpn-server
